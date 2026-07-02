@@ -2,6 +2,9 @@
 
 A React + Tailwind CSS app to search any GitHub username, explore their profile and top repositories, and manage a personal watchlist.
 
+## Live Demo
+https://github-explorer-alpha-six.vercel.app
+
 ## How to Run
 
 ```bash
