@@ -1,22 +1,63 @@
 function UserCard({ user }) {
   return (
-    <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 flex flex-col items-center text-center">
+    <div
+      className="rounded-xl p-5 flex flex-col items-center text-center"
+      style={{ backgroundColor: "#161b22", border: "1px solid #30363d" }}
+    >
       <img
         src={user.avatar_url}
-        alt="avatar"
-        className="w-32 h-32 rounded-full border-2 border-gray-700 mb-4"
+        alt={`${user.login} avatar`}
+        className="w-20 h-20 rounded-full mb-3"
+        style={{ border: "2px solid #30363d" }}
       />
-      <h2 className="text-xl font-bold text-white">
-        {user.name ? user.name : user.login}
+
+      <h2 className="text-base font-bold" style={{ color: "#e6edf3" }}>
+        {user.name || user.login}
       </h2>
-      <p className="text-gray-400 text-sm mt-1 mb-4">
-        {user.bio ? user.bio : "No bio available"}
+
+      <a
+        href={user.html_url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-xs mt-0.5 transition-colors"
+        style={{ color: "#6e40c9" }}
+        onMouseEnter={(e) => (e.target.style.color = "#9a6ee0")}
+        onMouseLeave={(e) => (e.target.style.color = "#6e40c9")}
+      >
+        @{user.login}
+      </a>
+
+      <p className="text-xs mt-2 mb-4 leading-relaxed" style={{ color: "#8b949e" }}>
+        {user.bio || "No bio available"}
       </p>
-      <div className="flex gap-6 text-sm text-gray-300">
-        <span>Followers: {user.followers}</span>
-        <span>Following: {user.following}</span>
-        <span>Public Repos: {user.public_repos}</span>
+
+      {/* Stats row */}
+      <div className="w-full grid grid-cols-3 gap-2">
+        {[
+          { label: "Followers", value: user.followers.toLocaleString() },
+          { label: "Following", value: user.following.toLocaleString() },
+          { label: "Repos",     value: user.public_repos },
+        ].map(({ label, value }) => (
+          <div
+            key={label}
+            className="rounded-md py-2"
+            style={{ backgroundColor: "#0d1117", border: "1px solid #21262d" }}
+          >
+            <p className="text-sm font-bold" style={{ color: "#e6edf3" }}>{value}</p>
+            <p className="text-xs" style={{ color: "#8b949e" }}>{label}</p>
+          </div>
+        ))}
       </div>
+
+      {(user.location || user.company) && (
+        <div
+          className="flex flex-wrap gap-3 mt-3 text-xs justify-center"
+          style={{ color: "#8b949e" }}
+        >
+          {user.location && <span>{user.location}</span>}
+          {user.company  && <span>{user.company}</span>}
+        </div>
+      )}
     </div>
   );
 }
