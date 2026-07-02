@@ -58,11 +58,19 @@ function App() {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setActiveTab("search")}
-              className="px-4 py-1.5 rounded-md text-sm font-medium transition-all"
+              className="px-4 py-1.5 rounded-md text-sm font-medium transition-all duration-200"
               style={
                 activeTab === "search"
-                  ? { border: "1px solid #6e40c9", color: text }
-                  : { border: "1px solid transparent", color: darkMode ? "#8b949e" : "#57606a" }
+                  ? {
+                      border: `1px solid ${darkMode ? "#ffffff" : "#000000"}`,
+                      color: darkMode ? "#ffffff" : "#000000",
+                      backgroundColor: "transparent",
+                    }
+                  : {
+                      border: "1px solid transparent",
+                      color: darkMode ? "#8b949e" : "#57606a",
+                      backgroundColor: "transparent",
+                    }
               }
             >
               Search
@@ -70,11 +78,19 @@ function App() {
 
             <button
               onClick={() => setActiveTab("watchlist")}
-              className="px-4 py-1.5 rounded-md text-sm font-medium transition-all"
+              className="px-4 py-1.5 rounded-md text-sm font-medium transition-all duration-200"
               style={
                 activeTab === "watchlist"
-                  ? { backgroundColor: "#6e40c9", color: "#fff", border: "1px solid #6e40c9" }
-                  : { border: "1px solid transparent", color: darkMode ? "#8b949e" : "#57606a" }
+                  ? {
+                      backgroundColor: darkMode ? "#ffffff" : "#000000",
+                      color: darkMode ? "#000000" : "#ffffff",
+                      border: `1px solid ${darkMode ? "#ffffff" : "#000000"}`,
+                    }
+                  : {
+                      border: "1px solid transparent",
+                      color: darkMode ? "#8b949e" : "#57606a",
+                      backgroundColor: "transparent",
+                    }
               }
             >
               Watchlist ({watchlist.length})
