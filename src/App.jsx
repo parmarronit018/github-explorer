@@ -102,6 +102,7 @@ function App() {
           <Home
             watchlist={watchlist}
             onSave={addToWatchlist}
+            onRemove={removeFromWatchlist}
             darkMode={darkMode}
             onSwitchTab={() => setActiveTab("watchlist")}
           />

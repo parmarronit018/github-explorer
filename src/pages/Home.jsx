@@ -3,7 +3,7 @@ import SearchBar from "../components/SearchBar";
 import UserCard from "../components/UserCard";
 import { fetchUserData, fetchUserRepos } from "../utils/api";
 
-function Home({ watchlist, onSave, darkMode, onSwitchTab }) {
+function Home({ watchlist, onSave, onRemove, darkMode, onSwitchTab }) {
   const [user, setUser]       = useState(null);
   const [repos, setRepos]     = useState([]);
   const [loading, setLoading] = useState(false);
@@ -79,23 +79,27 @@ function Home({ watchlist, onSave, darkMode, onSwitchTab }) {
           <div className="w-full lg:w-64 shrink-0">
             <UserCard user={user} darkMode={darkMode} />
             <button
-              onClick={() => onSave(user, repos)}
-              disabled={isSaved}
+              onClick={() => isSaved ? onRemove(user.login) : onSave(user, repos)}
               className="w-full mt-3 py-2.5 rounded-xl text-sm font-medium flex items-center justify-center gap-2 transition-all"
               style={
                 isSaved
-                  ? { border: `1px solid ${border}`, color: muted, cursor: "default" }
+                  ? { border: "1px solid #6e2c3e", color: "#f85149", backgroundColor: "transparent" }
                   : { border: "1px solid #6e40c9", color: "#c084fc", backgroundColor: "transparent" }
               }
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = isSaved ? "#1f1116" : "rgba(110,64,201,0.1)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "transparent";
+              }}
             >
-              {/* Star icon */}
-              <svg width="14" height="14" viewBox="0 0 16 16" fill={isSaved ? muted : "#c084fc"}>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill={isSaved ? "#f85149" : "#c084fc"}>
                 <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1
                   .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8
                   11.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818
                   6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/>
               </svg>
-              {isSaved ? "Saved to Watchlist" : "Save to Watchlist"}
+              {isSaved ? "Remove from Watchlist" : "Save to Watchlist"}
             </button>
           </div>
 
