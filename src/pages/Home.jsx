@@ -83,19 +83,19 @@ function Home({ watchlist, onSave, onRemove, darkMode }) {
               style={{
                 padding: "10px 16px",
                 borderRadius: "8px",
-                backgroundColor: "#ffffff",
-                color: "#000000",
-                border: "1px solid rgba(0,0,0,0.15)",
+                backgroundColor: darkMode ? "#ffffff" : "#000000",
+                color: darkMode ? "#000000" : "#ffffff",
+                border: "none",
                 fontWeight: 500,
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#f5f5f5";
+                e.currentTarget.style.backgroundColor = darkMode ? "#e6e6e6" : "#2d2d2d";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "#ffffff";
+                e.currentTarget.style.backgroundColor = darkMode ? "#ffffff" : "#000000";
               }}
             >
-              <svg width="13" height="13" viewBox="0 0 16 16" fill="#000000">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill={darkMode ? "#000000" : "#ffffff"}>
                 <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1
                   .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8
                   11.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818
