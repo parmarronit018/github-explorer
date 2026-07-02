@@ -227,19 +227,35 @@ function Watchlist({ watchlist, onRemove, darkMode, onSwitchTab }) {
                 href={user.html_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="shrink-0 px-3 py-1 rounded-md text-xs font-medium transition-all"
-                style={{ border: `1px solid ${border}`, color: muted }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#6e40c9"; e.currentTarget.style.color = "#6e40c9"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = border; e.currentTarget.style.color = muted; }}
+                className="shrink-0 px-3 py-1 rounded-md text-xs font-medium transition-all duration-200"
+                style={{
+                  border: `1px solid ${border}`,
+                  color: darkMode ? "#ffffff" : "#000000",
+                  backgroundColor: "transparent",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = darkMode ? "#1f2937" : "#f3f4f6";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "transparent";
+                }}
               >
                 View
               </a>
               <button
                 onClick={() => onRemove(user.login)}
-                className="shrink-0 px-3 py-1 rounded-md text-xs font-medium transition-all"
-                style={{ border: "1px solid #6e2c3e", color: "#f85149", backgroundColor: "transparent" }}
-                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#1f1116")}
-                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
+                className="shrink-0 px-3 py-1 rounded-md text-xs font-medium transition-all duration-200"
+                style={{
+                  border: `1px solid ${border}`,
+                  color: darkMode ? "#ffffff" : "#000000",
+                  backgroundColor: "transparent",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = darkMode ? "#1f2937" : "#f3f4f6";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "transparent";
+                }}
               >
                 Remove
               </button>
@@ -277,10 +293,18 @@ function Watchlist({ watchlist, onRemove, darkMode, onSwitchTab }) {
           {/* Search users button */}
           <button
             onClick={onSwitchTab}
-            className="mt-2 px-5 py-2 rounded-lg text-sm font-medium transition-all"
-            style={{ backgroundColor: "#6e40c9", color: "#ffffff", border: "none" }}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#7c4dca")}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#6e40c9")}
+            className="mt-2 px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 active:scale-95"
+            style={{
+              border: `1px solid ${darkMode ? "#4b5563" : "#d1d5db"}`,
+              color: darkMode ? "#ffffff" : "#000000",
+              backgroundColor: "transparent",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = darkMode ? "#1f2937" : "#f3f4f6";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "transparent";
+            }}
           >
             Search Users
           </button>
