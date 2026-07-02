@@ -3,14 +3,13 @@ import SearchBar from "../components/SearchBar";
 import UserCard from "../components/UserCard";
 import { fetchUserData, fetchUserRepos } from "../utils/api";
 
-function Home({ watchlist, onSave, onRemove, darkMode, onSwitchTab }) {
+function Home({ watchlist, onSave, onRemove, darkMode }) {
   const [user, setUser]       = useState(null);
   const [repos, setRepos]     = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError]     = useState(null);
   const [searched, setSearched] = useState(false);
 
-  const card   = darkMode ? "#161b22" : "#ffffff";
   const border = darkMode ? "#30363d" : "#d0d7de";
   const muted  = darkMode ? "#8b949e" : "#57606a";
   const text   = darkMode ? "#e6edf3" : "#1f2328";
