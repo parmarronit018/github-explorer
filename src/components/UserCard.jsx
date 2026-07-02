@@ -24,10 +24,16 @@ function UserCard({ user, darkMode }) {
         {user.name || user.login}
       </h2>
 
-      {/* Username — plain muted text, no purple */}
-      <span className="text-xs mt-0.5" style={{ color: muted }}>
+      {/* Username — blue, clickable */}
+      <a
+        href={user.html_url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-xs mt-0.5 transition-opacity hover:opacity-75"
+        style={{ color: "#58a6ff" }}
+      >
         @{user.login}
-      </span>
+      </a>
 
       {/* Bio */}
       <p className="text-xs mt-2 mb-4 leading-relaxed" style={{ color: muted }}>
@@ -81,8 +87,8 @@ function UserCard({ user, darkMode }) {
             href={user.html_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="truncate max-w-[160px] transition-opacity duration-200 hover:opacity-70"
-            style={{ color: muted }}
+            className="truncate max-w-[160px] transition-opacity duration-200 hover:opacity-75"
+            style={{ color: "#58a6ff" }}
           >
             {user.html_url}
           </a>

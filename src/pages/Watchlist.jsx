@@ -195,7 +195,7 @@ function Watchlist({ watchlist, onRemove, darkMode, onSwitchTab }) {
                   <span className="font-semibold text-sm" style={{ color: text }}>
                     {user.name || user.login}
                   </span>
-                  <span className="text-xs" style={{ color: "#6e40c9" }}>
+                  <span className="text-xs" style={{ color: "#58a6ff" }}>
                     @{user.login}
                   </span>
                 </div>

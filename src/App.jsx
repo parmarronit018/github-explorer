@@ -62,9 +62,9 @@ function App() {
               style={
                 activeTab === "search"
                   ? {
+                      backgroundColor: darkMode ? "#ffffff" : "#000000",
+                      color: darkMode ? "#000000" : "#ffffff",
                       border: `1px solid ${darkMode ? "#ffffff" : "#000000"}`,
-                      color: darkMode ? "#ffffff" : "#000000",
-                      backgroundColor: "transparent",
                     }
                   : {
                       border: "1px solid transparent",

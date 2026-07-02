@@ -203,8 +203,8 @@ function RepoCard({ repo, darkMode }) {
         {repo.description || "No description available"}
       </p>
 
-      {/* Stars + language — plain text, no badge */}
-      <div className="flex items-center gap-2 text-xs mt-auto" style={{ color: muted }}>
+      {/* Stars + language — star count + language pill badge */}
+      <div className="flex items-center gap-2 text-xs mt-auto flex-wrap" style={{ color: muted }}>
         <span className="flex items-center gap-1">
           <svg width="12" height="12" viewBox="0 0 16 16" fill={muted}>
             <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1
@@ -217,7 +217,16 @@ function RepoCard({ repo, darkMode }) {
         {repo.language && (
           <>
             <span style={{ color: darkMode ? "#4b5563" : "#d1d5db" }}>•</span>
-            <span>{repo.language}</span>
+            <span
+              className="px-2 py-0.5 rounded-md text-xs"
+              style={{
+                backgroundColor: darkMode ? "#21262d" : "#eaeef2",
+                border: `1px solid ${darkMode ? "#30363d" : "#d0d7de"}`,
+                color: darkMode ? "#e6edf3" : "#1f2328",
+              }}
+            >
+              {repo.language}
+            </span>
           </>
         )}
       </div>
