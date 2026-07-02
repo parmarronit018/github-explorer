@@ -37,10 +37,10 @@ function App() {
       {/* Navbar */}
       <nav style={{ borderBottom: `1px solid ${darkMode ? "#21262d" : "#d0d7de"}`, backgroundColor: bg }}
         className="sticky top-0 z-10">
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-3">
+        <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
 
           {/* Logo */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <svg height="24" viewBox="0 0 16 16" width="24" fill={text}>
               <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
                 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
@@ -51,14 +51,14 @@ function App() {
                 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01
                 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
             </svg>
-            <span className="text-sm font-semibold">GitHub Explorer</span>
+            <span className="text-sm font-semibold whitespace-nowrap">GitHub Explorer</span>
           </div>
 
           {/* Right: tabs + toggle */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2">
             <button
               onClick={() => setActiveTab("search")}
-              className="px-4 py-1.5 rounded-md text-sm font-medium transition-all duration-200"
+              className="px-3 py-1.5 sm:px-4 rounded-md text-sm font-medium transition-all duration-200 whitespace-nowrap"
               style={
                 activeTab === "search"
                   ? {
@@ -78,7 +78,7 @@ function App() {
 
             <button
               onClick={() => setActiveTab("watchlist")}
-              className="px-4 py-1.5 rounded-md text-sm font-medium transition-all duration-200"
+              className="px-3 py-1.5 sm:px-4 rounded-md text-sm font-medium transition-all duration-200 whitespace-nowrap"
               style={
                 activeTab === "watchlist"
                   ? {
