@@ -79,20 +79,23 @@ function Home({ watchlist, onSave, onRemove, darkMode }) {
             <UserCard user={user} darkMode={darkMode} />
             <button
               onClick={() => isSaved ? onRemove(user.login) : onSave(user, repos)}
-              className="w-full mt-3 py-2.5 rounded-lg text-sm font-medium flex items-center justify-center gap-2 transition-all duration-200 active:scale-95"
+              className="w-full mt-3 text-sm font-medium flex items-center justify-center gap-2 transition-all duration-200 active:scale-95"
               style={{
-                border: `1px solid ${darkMode ? "#4b5563" : "#d1d5db"}`,
-                color: darkMode ? "#ffffff" : "#000000",
-                backgroundColor: "transparent",
+                padding: "10px 16px",
+                borderRadius: "8px",
+                backgroundColor: "#ffffff",
+                color: "#000000",
+                border: "1px solid rgba(0,0,0,0.15)",
+                fontWeight: 500,
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = darkMode ? "#1f2937" : "#f3f4f6";
+                e.currentTarget.style.backgroundColor = "#f5f5f5";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "transparent";
+                e.currentTarget.style.backgroundColor = "#ffffff";
               }}
             >
-              <svg width="13" height="13" viewBox="0 0 16 16" fill={darkMode ? "#ffffff" : "#000000"}>
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="#000000">
                 <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1
                   .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8
                   11.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818
