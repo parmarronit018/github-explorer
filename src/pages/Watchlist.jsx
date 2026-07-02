@@ -195,9 +195,15 @@ function Watchlist({ watchlist, onRemove, darkMode, onSwitchTab }) {
                   <span className="font-semibold text-sm" style={{ color: text }}>
                     {user.name || user.login}
                   </span>
-                  <span className="text-xs" style={{ color: "#58a6ff" }}>
+                  <a
+                    href={user.html_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs transition-opacity hover:opacity-75"
+                    style={{ color: "#58a6ff" }}
+                  >
                     @{user.login}
-                  </span>
+                  </a>
                 </div>
                 <div className="flex items-center gap-4 mt-0.5 text-xs" style={{ color: muted }}>
                   {/* Followers icon */}
@@ -229,15 +235,15 @@ function Watchlist({ watchlist, onRemove, darkMode, onSwitchTab }) {
                 rel="noopener noreferrer"
                 className="shrink-0 px-3 py-1 rounded-md text-xs font-medium transition-all duration-200"
                 style={{
-                  border: `1px solid ${border}`,
-                  color: darkMode ? "#ffffff" : "#000000",
-                  backgroundColor: "transparent",
+                  border: "1px solid #388bfd",
+                  color: "#58a6ff",
+                  backgroundColor: darkMode ? "rgba(56,139,253,0.1)" : "rgba(56,139,253,0.08)",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = darkMode ? "#1f2937" : "#f3f4f6";
+                  e.currentTarget.style.backgroundColor = darkMode ? "rgba(56,139,253,0.2)" : "rgba(56,139,253,0.15)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "transparent";
+                  e.currentTarget.style.backgroundColor = darkMode ? "rgba(56,139,253,0.1)" : "rgba(56,139,253,0.08)";
                 }}
               >
                 View
@@ -246,15 +252,15 @@ function Watchlist({ watchlist, onRemove, darkMode, onSwitchTab }) {
                 onClick={() => onRemove(user.login)}
                 className="shrink-0 px-3 py-1 rounded-md text-xs font-medium transition-all duration-200"
                 style={{
-                  border: `1px solid ${border}`,
-                  color: darkMode ? "#ffffff" : "#000000",
-                  backgroundColor: "transparent",
+                  border: "1px solid #f85149",
+                  color: "#f85149",
+                  backgroundColor: darkMode ? "rgba(248,81,73,0.1)" : "rgba(248,81,73,0.08)",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = darkMode ? "#1f2937" : "#f3f4f6";
+                  e.currentTarget.style.backgroundColor = darkMode ? "rgba(248,81,73,0.2)" : "rgba(248,81,73,0.15)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "transparent";
+                  e.currentTarget.style.backgroundColor = darkMode ? "rgba(248,81,73,0.1)" : "rgba(248,81,73,0.08)";
                 }}
               >
                 Remove
