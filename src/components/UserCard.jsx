@@ -24,18 +24,10 @@ function UserCard({ user, darkMode }) {
         {user.name || user.login}
       </h2>
 
-      {/* Username link */}
-      <a
-        href={user.html_url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-xs mt-0.5 transition-colors"
-        style={{ color: "#6e40c9" }}
-        onMouseEnter={(e) => (e.target.style.color = "#9a6ee0")}
-        onMouseLeave={(e) => (e.target.style.color = "#6e40c9")}
-      >
+      {/* Username — plain muted text, no purple */}
+      <span className="text-xs mt-0.5" style={{ color: muted }}>
         @{user.login}
-      </a>
+      </span>
 
       {/* Bio */}
       <p className="text-xs mt-2 mb-4 leading-relaxed" style={{ color: muted }}>
@@ -64,7 +56,6 @@ function UserCard({ user, darkMode }) {
       <div className="w-full mt-4 flex flex-col gap-1.5 text-xs" style={{ color: muted }}>
         {user.location && (
           <span className="flex items-center gap-1.5 justify-center">
-            {/* Location pin icon */}
             <svg width="12" height="12" viewBox="0 0 16 16" fill={muted}>
               <path d="m12.596 11.596-3.535 3.536a1.5 1.5 0 0 1-2.122 0l-3.535-3.536a6.5
                 6.5 0 1 1 9.192-9.193 6.5 6.5 0 0 1 0 9.193Zm-1.06-8.132v-.001a5
@@ -74,33 +65,28 @@ function UserCard({ user, darkMode }) {
             {user.location}
           </span>
         )}
-        {user.blog && (
-          <span className="flex items-center gap-1.5 justify-center">
-            {/* Link icon */}
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="#6e40c9">
-              <path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5
-                0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018
-                2 2 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25
-                1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69
-                9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1
-                1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1
-                1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0
-                1-.018 1.042.751.751 0 0 1-1.042.018 2 2 0 0 0-2.83
-                0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"/>
-            </svg>
-            <a
-              href={user.html_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="truncate max-w-[160px] transition-colors"
-              style={{ color: "#6e40c9" }}
-              onMouseEnter={(e) => (e.target.style.color = "#9a6ee0")}
-              onMouseLeave={(e) => (e.target.style.color = "#6e40c9")}
-            >
-              {user.html_url}
-            </a>
-          </span>
-        )}
+        <span className="flex items-center gap-1.5 justify-center">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill={muted}>
+            <path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5
+              0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018
+              2 2 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25
+              1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69
+              9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1
+              1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1
+              1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0
+              1-.018 1.042.751.751 0 0 1-1.042.018 2 2 0 0 0-2.83
+              0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"/>
+          </svg>
+          <a
+            href={user.html_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="truncate max-w-[160px] transition-opacity duration-200 hover:opacity-70"
+            style={{ color: muted }}
+          >
+            {user.html_url}
+          </a>
+        </span>
       </div>
     </div>
   );

@@ -163,52 +163,49 @@ function Home({ watchlist, onSave, onRemove, darkMode, onSwitchTab }) {
 /* ── Repo card ─────────────────────────────────────────────────── */
 function RepoCard({ repo, darkMode }) {
   const card   = darkMode ? "#161b22" : "#ffffff";
-  const border = darkMode ? "#30363d" : "#d0d7de";
+  const border = darkMode ? "#30363d" : "#d1d5db";
   const muted  = darkMode ? "#8b949e" : "#57606a";
   const text   = darkMode ? "#e6edf3" : "#1f2328";
 
-  // Language badge colors
-  const langColors = {
-    JavaScript: { bg: "#2e2a05", text: "#e3b341", border: "#4d3e06" },
-    TypeScript: { bg: "#051d3e", text: "#79c0ff", border: "#0c2e5c" },
-    Python:     { bg: "#0d2a1f", text: "#3fb950", border: "#143d2c" },
-    Ruby:       { bg: "#2e0d0d", text: "#ff7b72", border: "#4d1a1a" },
-    Go:         { bg: "#051a2e", text: "#79c0ff", border: "#0c2e4a" },
-    Rust:       { bg: "#2e1a0d", text: "#ffa657", border: "#4d2e14" },
-    Java:       { bg: "#1a0d2e", text: "#c084fc", border: "#2e1a4d" },
-    CSS:        { bg: "#0d1a2e", text: "#79c0ff", border: "#142e4a" },
-    HTML:       { bg: "#2e1a0d", text: "#ffa657", border: "#4d2e14" },
-  };
-  const lc = langColors[repo.language] || { bg: "#21262d", text: "#8b949e", border: "#30363d" };
-
   return (
     <div
-      className="rounded-xl p-4 flex flex-col gap-2 transition-all"
+      className="rounded-xl p-4 flex flex-col gap-2 transition-all duration-200"
       style={{ backgroundColor: card, border: `1px solid ${border}` }}
-      onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#6e40c9")}
+      onMouseEnter={(e) => (e.currentTarget.style.borderColor = darkMode ? "#8b949e" : "#57606a")}
       onMouseLeave={(e) => (e.currentTarget.style.borderColor = border)}
     >
+      {/* Name + external link icon */}
       <div className="flex items-start justify-between gap-2">
-        <span className="font-semibold text-sm" style={{ color: text }}>{repo.name}</span>
+        <span className="font-semibold text-sm leading-snug" style={{ color: text }}>
+          {repo.name}
+        </span>
         <a
           href={repo.html_url}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xs shrink-0 transition-colors"
-          style={{ color: "#6e40c9" }}
-          onMouseEnter={(e) => (e.target.style.color = "#9a6ee0")}
-          onMouseLeave={(e) => (e.target.style.color = "#6e40c9")}
+          className="shrink-0 transition-opacity duration-200 opacity-60 hover:opacity-100 mt-0.5"
+          title="Open on GitHub"
         >
-          View
+          {/* External link icon */}
+          <svg width="14" height="14" viewBox="0 0 16 16" fill={muted}>
+            <path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0
+              .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1
+              1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2
+              12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1
+              .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751
+              0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25
+              0 0 1 10.604 1Z"/>
+          </svg>
         </a>
       </div>
 
+      {/* Description */}
       <p className="text-xs flex-1 leading-relaxed" style={{ color: muted }}>
         {repo.description || "No description available"}
       </p>
 
-      <div className="flex items-center gap-3 text-xs mt-auto" style={{ color: muted }}>
-        {/* Star count */}
+      {/* Stars + language — plain text, no badge */}
+      <div className="flex items-center gap-2 text-xs mt-auto" style={{ color: muted }}>
         <span className="flex items-center gap-1">
           <svg width="12" height="12" viewBox="0 0 16 16" fill={muted}>
             <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1
@@ -218,14 +215,11 @@ function RepoCard({ repo, darkMode }) {
           </svg>
           {repo.stargazers_count.toLocaleString()}
         </span>
-        {/* Language badge */}
         {repo.language && (
-          <span
-            className="px-2 py-0.5 rounded-full text-xs"
-            style={{ backgroundColor: lc.bg, color: lc.text, border: `1px solid ${lc.border}` }}
-          >
-            {repo.language}
-          </span>
+          <>
+            <span style={{ color: darkMode ? "#4b5563" : "#d1d5db" }}>•</span>
+            <span>{repo.language}</span>
+          </>
         )}
       </div>
     </div>
