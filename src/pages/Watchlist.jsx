@@ -235,15 +235,15 @@ function Watchlist({ watchlist, onRemove, darkMode, onSwitchTab }) {
                 rel="noopener noreferrer"
                 className="shrink-0 px-3 py-1 rounded-md text-xs font-medium transition-all duration-200"
                 style={{
-                  border: "1px solid #388bfd",
-                  color: "#58a6ff",
-                  backgroundColor: darkMode ? "rgba(56,139,253,0.1)" : "rgba(56,139,253,0.08)",
+                  border: `1px solid ${darkMode ? "#3d444d" : "#d0d7de"}`,
+                  color: darkMode ? "#cdd9e5" : "#1f2328",
+                  backgroundColor: darkMode ? "#2a2f35" : "#f6f8fa",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = darkMode ? "rgba(56,139,253,0.2)" : "rgba(56,139,253,0.15)";
+                  e.currentTarget.style.backgroundColor = darkMode ? "#32383f" : "#eaeef2";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = darkMode ? "rgba(56,139,253,0.1)" : "rgba(56,139,253,0.08)";
+                  e.currentTarget.style.backgroundColor = darkMode ? "#2a2f35" : "#f6f8fa";
                 }}
               >
                 View
@@ -252,15 +252,17 @@ function Watchlist({ watchlist, onRemove, darkMode, onSwitchTab }) {
                 onClick={() => onRemove(user.login)}
                 className="shrink-0 px-3 py-1 rounded-md text-xs font-medium transition-all duration-200"
                 style={{
-                  border: "1px solid #f85149",
-                  color: "#f85149",
-                  backgroundColor: darkMode ? "rgba(248,81,73,0.1)" : "rgba(248,81,73,0.08)",
+                  border: `1px solid ${darkMode ? "#3d444d" : "#d0d7de"}`,
+                  color: darkMode ? "#e5534b" : "#cf222e",
+                  backgroundColor: darkMode ? "#2a2f35" : "#f6f8fa",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = darkMode ? "rgba(248,81,73,0.2)" : "rgba(248,81,73,0.15)";
+                  e.currentTarget.style.backgroundColor = darkMode ? "#3d1a1a" : "#ffdbd9";
+                  e.currentTarget.style.borderColor = darkMode ? "#e5534b" : "#cf222e";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = darkMode ? "rgba(248,81,73,0.1)" : "rgba(248,81,73,0.08)";
+                  e.currentTarget.style.backgroundColor = darkMode ? "#2a2f35" : "#f6f8fa";
+                  e.currentTarget.style.borderColor = darkMode ? "#3d444d" : "#d0d7de";
                 }}
               >
                 Remove
