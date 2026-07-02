@@ -32,7 +32,7 @@ function App() {
   const text = darkMode ? "#e6edf3" : "#1f2328";
 
   return (
-    <div style={{ backgroundColor: bg, color: text, minHeight: "100vh" }}>
+    <div style={{ backgroundColor: bg, color: text, minHeight: "100vh", display: "flex", flexDirection: "column" }}>
 
       {/* Navbar */}
       <nav style={{ borderBottom: `1px solid ${darkMode ? "#21262d" : "#d0d7de"}`, backgroundColor: bg }}
@@ -83,21 +83,38 @@ function App() {
             {/* Dark/light toggle */}
             <button
               onClick={() => setDarkMode(!darkMode)}
-              className="w-9 h-9 rounded-md flex items-center justify-center text-sm transition-all"
+              className="w-9 h-9 rounded-md flex items-center justify-center transition-all duration-200"
               style={{
-                border: `1px solid ${darkMode ? "#30363d" : "#d0d7de"}`,
-                color: darkMode ? "#8b949e" : "#57606a",
+                border: `1px solid ${darkMode ? "#4b5563" : "#d1d5db"}`,
               }}
               title="Toggle theme"
             >
-              {darkMode ? "☀" : "◑"}
+              {darkMode ? (
+                /* Sun icon — shown in dark mode, white */
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="4"/>
+                  <line x1="12" y1="2" x2="12" y2="6"/>
+                  <line x1="12" y1="18" x2="12" y2="22"/>
+                  <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/>
+                  <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/>
+                  <line x1="2" y1="12" x2="6" y2="12"/>
+                  <line x1="18" y1="12" x2="22" y2="12"/>
+                  <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/>
+                  <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/>
+                </svg>
+              ) : (
+                /* Moon icon — shown in light mode, black */
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+              )}
             </button>
           </div>
         </div>
       </nav>
 
       {/* Pages */}
-      <main>
+      <main style={{ flex: 1 }}>
         <div className={activeTab === "search" ? "block" : "hidden"}>
           <Home
             watchlist={watchlist}
