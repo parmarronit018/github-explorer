@@ -1,11 +1,8 @@
 # GitHub Explorer
 
-A React + Tailwind CSS app to search any GitHub username, explore their profile and top repositories, and manage a personal watchlist.
+A small React + Vite app (with Tailwind CSS) to search GitHub users and manage a personal watchlist.
 
-## Live Demo
-https://github-explorer-alpha-six.vercel.app
-
-## How to Run
+## Quick start
 
 ```bash
 git clone https://github.com/parmarronit018/github-explorer.git
@@ -14,61 +11,49 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173)
+Open http://localhost:5173 in your browser.
 
-## Features
+## What this repo contains
 
-### Search
-- Search any GitHub username via the public GitHub API
-- Profile card: avatar, name, bio, followers, following, public repos, location
-- Clickable `@username` and GitHub profile URL link (opens in new tab)
-- Top 5 most-starred repositories with name, description, star count, and language badge
-- External link icon (↗) on each repo card to open directly on GitHub
-- Loading spinner while fetching data
-- User not found (404), empty input, and API rate limit (60 req/hr) errors handled with clear messages
-- Enter key support on search input
-- Search icon inside input field for better UX
+- `src/` — React source files
+  - `components/` — reusable components (`SearchBar.jsx`, `UserCard.jsx`, ...)
+  - `pages/` — top-level pages (`Home.jsx`, `Watchlist.jsx`)
+  - `utils/api.js` — GitHub API helper
+- `index.html`, `vite.config.js`, `package.json`
 
-### Watchlist
-- Save any searched user with one click (star icon button)
-- Save/Remove toggle button — theme-aware (white filled in dark mode, black filled in light mode)
-- Remove users from the watchlist from both the search page and the watchlist page
-- Watchlist persists across page refreshes using localStorage
-- Clickable `@username` in watchlist rows — opens GitHub profile in new tab
-- View button (GitHub default style) and Remove button (GitHub danger red style) on each row
-- Filter saved users by name or username (client-side, instant search)
-- Stats panel (always visible):
-  - Total users saved
-  - Average followers across saved users
-  - Most-used language (aggregated from top repos)
-  - Combined top-repo stars across all saved users
-- Empty state with icon, message, and "Search Users" button to redirect back
+## Confirmed features
 
-### UI / UX
-- Dark / Light mode toggle with sun/moon SVG icons — all colors adapt to theme
-- GitHub design system color palette throughout
-- Active tab (Search / Watchlist) shown as filled button; inactive as plain text
-- Consistent button styles — View, Remove, Save, Search all theme-aware
-- Fully responsive layout — works on mobile, tablet, and desktop
-- Navbar stays on one line on all screen sizes (no text wrapping)
-- Footer always stays at the bottom using flex layout
-- Clean minimal design inspired by GitHub's own UI
+- Search input component to look up GitHub users (uses `utils/api.js`)
+- `UserCard` component to display basic profile info (avatar, name, bio, followers, following, public repos)
+- Top 5 most-starred repos displayed below the profile card
+- Loading, "user not found", and empty/invalid input states handled
+- Save/remove users to a personal **Watchlist**
+- Watchlist page with search/filter and a stats panel (total saved, average followers)
+- Data persists to `localStorage` so the watchlist survives a page refresh
+- Tailwind CSS for styling
 
-## Tech Stack
+## Scripts
 
-- React 19 (Vite)
-- Tailwind CSS v4
-- GitHub REST API (public, no authentication required)
+- `npm run dev` — start Vite dev server
+- `npm run build` — build for production
+- `npm run preview` — preview production build
 
-## What I'd Improve With More Time
+## What I'd improve with more time
 
-- Add GitHub personal access token input to raise API rate limit from 60 to 5,000 req/hr
-- Show user's pinned repositories using GitHub GraphQL API
-- Display user organizations on the profile card
-- Add "recent searches" list persisted in localStorage across refreshes
+- Add debounce on the search input to reduce unnecessary API calls
+- Handle GitHub's API rate limiting (60 req/hr unauthenticated) with a friendly message
+- Add a dark/light mode toggle
+- Add a "most-used language" stat to the Watchlist stats panel
 
-## What I Got Stuck On
+## What I got stuck on
 
-- Tailwind v4 dark mode works differently from v3 — `darkMode: "class"` config doesn't exist anymore. Had to research and use `@variant dark` in CSS to make class-based dark mode work with the `@tailwindcss/vite` plugin.
-- GitHub's API rate limit (60 req/hr unauthenticated) returns a `403` status code, not `429` as I initially expected. Had to handle both status codes separately to show accurate error messages to users.
-- Balancing the watchlist stats calculations — aggregating language data from nested repo arrays required careful state management to avoid recalculating on every render.
+- GitHub's `sort=stars` query parameter on the repos endpoint didn't actually sort the results by stars as expected. I had to sort the repos manually on the client side using JavaScript's `.sort()` after fetching them.
+- Deciding where to store the watchlist data (Context API vs simple state in the parent component) — went with simpler state + localStorage to keep it easy to follow.
+
+## Notes
+
+- If you plan to make many API requests during testing, consider using a GitHub personal access token to increase rate limits.
+
+## Contributing
+
+Feel free to open issues or PRs. For small changes, update the relevant files in `src/` and submit a PR.
