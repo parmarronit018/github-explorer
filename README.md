@@ -2,7 +2,7 @@
 
 A small React + Vite app (with Tailwind CSS) to search GitHub users and manage a personal watchlist.
 
-## Quick start
+## Quick start       
 
 ```bash
 git clone https://github.com/parmarronit018/github-explorer.git
