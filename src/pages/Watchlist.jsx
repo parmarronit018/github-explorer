@@ -33,7 +33,6 @@ function Watchlist({ watchlist, onRemove, darkMode, onSwitchTab }) {
   const border = darkMode ? "#30363d" : "#d0d7de";
   const muted  = darkMode ? "#8b949e" : "#57606a";
   const text   = darkMode ? "#e6edf3" : "#1f2328";
-  const bg     = darkMode ? "#0d1117" : "#f6f8fa";
 
   const filtered = watchlist.filter((user) => {
     const q = filterText.toLowerCase();
